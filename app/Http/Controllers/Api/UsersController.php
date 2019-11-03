@@ -9,7 +9,6 @@ use App\Models\User;
 class UsersController extends BaseController
 {
    public function index( User $user){
-       print_r($user->getProvidersY());
-       print_r($user->getProvidersX());
+       print_r($user->getUsers());
    }
 }
