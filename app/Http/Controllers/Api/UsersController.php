@@ -8,7 +8,7 @@ use App\Models\User;
 
 class UsersController extends BaseController
 {
-   public function index( User $user){
-       print_r($user->getUsers());
+   public function index( User $model){
+       return $model->getUsers();
    }
 }
