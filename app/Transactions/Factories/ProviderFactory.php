@@ -11,7 +11,7 @@ class ProviderFactory
         if(file_exists($file)){
             $class = "\\App\\Transactions\\Providers\\$provider";
             if(class_exists($class)){
-                return new $class(json_decode(file_get_contents($file)));
+                return new $class(json_decode(file_get_contents($file),true));
             }
             throw new ClassNotFoundException;
         }

@@ -43,6 +43,7 @@ abstract class ProviderAbstract
      */
     protected $data = [];
 
+
     /**
      * ProviderAbstract constructor.
      * @param array $data
