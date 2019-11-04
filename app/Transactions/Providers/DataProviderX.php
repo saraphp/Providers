@@ -13,18 +13,18 @@ class DataProviderX extends ProviderAbstract
     const  PROVIDER_AUTHORISED_STATUS = 1;
     const  PROVIDER_DECLINE_STATUS = 2;
     const  PROVIDER_REFUNDED_STATUS = 3;
-
     /**
      * @throws StatusNotFoundException
      */
     public function run()
     {
-        foreach( $this->data['users'] as $user ){
+        $users =[];
+        foreach( $this->data as $key=>$user){
             $this->balance = $user['parentAmount'];
-            $this->currency =$user['Currency'];
+            $this->currency = $user['Currency'];
             $this->provider = class_basename(self::class);
             $this->created_at = Carbon::createFromFormat('Y-m-d',$user['registerationDate']);
-            $this->id =$user['parentIdentification'];
+            $this->id = $user['parentIdentification'];
             switch ($user['statusCode'])
             {
                 case self::PROVIDER_AUTHORISED_STATUS:
@@ -39,8 +39,10 @@ class DataProviderX extends ProviderAbstract
                 default:
                     throw new StatusNotFoundException;
             }
-            $this->data[]= $this;
-     }
-     return  $this->data;
+            $this->data[$key]= $this;
+        }
+
+        return $this->data;
     }
+
 }

@@ -42,8 +42,6 @@ abstract class ProviderAbstract
      * @var array
      */
     protected $data = [];
-
-
     /**
      * ProviderAbstract constructor.
      * @param array $data
@@ -54,4 +52,9 @@ abstract class ProviderAbstract
     }
 
     abstract public function run();
+
+    function getData()
+    {
+        return $this->data;
+    }
 }

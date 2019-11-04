@@ -14,9 +14,7 @@ class ProviderCollection
 
     public function addProvider(ProviderAbstract $provider)
     {
-
         $this->collections[] = $provider->run();
-        unset($this->collections[0]['users']);
     }
 
     public function getCollection()
