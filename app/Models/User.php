@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Providers\AllProviders;
+use App\Transactions\ProviderCollection;
 
 class User extends Authenticatable
 {
@@ -13,8 +13,8 @@ class User extends Authenticatable
 
     public function getData()
     {
-        $model = new AllProviders;
-       return collect($model->getAllProvidersData());
+        $model = new ProviderCollection;
+       return $model->getCollection();
 
     }
 
