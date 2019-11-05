@@ -26,7 +26,7 @@ class User extends Authenticatable
     {
          return $this->getCollection()
                     ->when(request('provider'), function($q) {
-                        return $q->where('type', trim(request('provider')));
+                        return $q->where('provider', trim(request('provider')));
                     })
                     ->when(request('statusCode'), function($q) {
                         return $q->where('status', trim(request('statusCode')));
