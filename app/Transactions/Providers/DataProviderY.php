@@ -19,14 +19,13 @@ class DataProviderY extends ProviderAbstract
      */
     public function run()
     {
-        $users =[];
-        foreach( $this->data as $user){
-        $this->balance = $user['balance'];
-        $this->currency = $user['currency'];
+
+        $this->balance = $this->data['balance'];
+        $this->currency = $this->data['currency'];
         $this->provider = class_basename(self::class);
-        $this->created_at = Carbon::createFromFormat('d/m/Y',$user['created_at']);
-        $this->id = $user['id'];
-        switch ($user['status'])
+        $this->created_at = Carbon::createFromFormat('d/m/Y',$this->data['created_at']);
+        $this->id = $this->data['id'];
+        switch ($this->data['status'])
         {
             case self::PROVIDER_AUTHORISED_STATUS:
                 $this->status = parent::AUTHORISED_STATUS;
@@ -40,8 +39,5 @@ class DataProviderY extends ProviderAbstract
             default:
                 throw new StatusNotFoundException;
         }
-        $users[]= $this;
-    }
-        return $users;
     }
 }

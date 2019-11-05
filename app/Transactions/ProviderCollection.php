@@ -12,9 +12,9 @@ class ProviderCollection
 {
     protected $collections = [];
 
-    public function addProvider(ProviderAbstract $provider)
+    public function addProvider($providers)
     {
-        $this->collections[] = $provider->run();
+        $this->collections = array_merge( $this->collections,$providers);
     }
 
     public function getCollection()

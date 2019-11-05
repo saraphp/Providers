@@ -53,8 +53,4 @@ abstract class ProviderAbstract
 
     abstract public function run();
 
-    function getData()
-    {
-        return $this->data;
-    }
 }
